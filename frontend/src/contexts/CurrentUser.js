@@ -3,7 +3,6 @@ import { createContext, useState } from "react";
 
 export const CurrentUser = createContext()
 
-___
 function CurrentUserProvider({ children }) {
 
     const [currentUser, setCurrentUser] = useState(null)
@@ -19,7 +18,7 @@ function CurrentUserProvider({ children }) {
             setCurrentUser(user)
         }
         getLoggedInUser()
-    }, [])
-  
+    }, []) 
+}
 
 export default CurrentUserProvider

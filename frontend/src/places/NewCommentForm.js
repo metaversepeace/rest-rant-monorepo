@@ -2,16 +2,6 @@ import { useState, useEffect } from "react"
 import { useHistory } from "react-router"
 
 function NewCommentForm({ place, onSubmit }) {
-
-    const [authors, setAuthors] = useState([])
-
-    const [comment, setComment] = useState({
-        content: '',
-        stars: 3,
-        rant: false,
-        authorId: ''
-    })
-
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(`http://localhost:5001/users`)
@@ -36,10 +26,18 @@ function NewCommentForm({ place, onSubmit }) {
             authorId: authors[0]?.userId
         })
     }
-
+    
+    const { currentUser } = useContext(CurrentUser)
+    
+    if(!currentUser){
+        return <p>You must be logged in to leave a rant or rave.</p>
+    }
+    
     return (
         <form onSubmit={handleSubmit}>
             <div className="row">
+      
+    
                 <div className="form-group col-sm-12">
                     <label htmlFor="content">Content</label>
                     <textarea

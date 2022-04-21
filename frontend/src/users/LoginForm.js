@@ -15,8 +15,6 @@ function LoginForm() {
 
     const [errorMessage, setErrorMessage] = useState(null)
 
-
-
     ___
     async function handleSubmit(e) {
         const response = await fetch(`http://localhost:5000/authentication/`, {
@@ -80,6 +78,7 @@ function LoginForm() {
             </form>
         </main>
     )
+  }
 }
 
-export default LoginForm
+export default LoginForm;
